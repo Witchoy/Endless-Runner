@@ -7,6 +7,7 @@ public class CoinCollect : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         coinFX.Play();
+        MasterInfo.coinCount += 1;
         Destroy(gameObject);
     }
 }
