@@ -75,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e0cb5a9c0dcb18478a879162fecebd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7992875852460192936}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e0cb5a9c0dcb18478a879162fecebd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7666846565647574848}
   m_SourcePrefab: {fileID: 100100000, guid: 8e0cb5a9c0dcb18478a879162fecebd7, type: 3}
 --- !u!1 &2099761052071380862 stripped
 GameObject:
@@ -103,3 +106,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -397847766249855385, guid: 8e0cb5a9c0dcb18478a879162fecebd7, type: 3}
+--- !u!114 &7666846565647574848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099761052071380862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 939d0afb982b74c4f81c9a5fc1894fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle

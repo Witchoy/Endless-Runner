@@ -14,4 +14,9 @@ public class UiManager : MonoBehaviour
     {
         scoreText.text = $"Coins: {score}";
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnScoreChanged -= UpdateScore;
+    }
 }

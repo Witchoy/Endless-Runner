@@ -61,10 +61,7 @@ PrefabInstance:
       addedObject: {fileID: 931042608900088643}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 210039b3851811c438fe3f75e9c752a3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3720344442052305006}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 210039b3851811c438fe3f75e9c752a3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6865855115530301000}
+      addedObject: {fileID: 3923941615917573964}
   m_SourcePrefab: {fileID: 100100000, guid: 210039b3851811c438fe3f75e9c752a3, type: 3}
 --- !u!1 &9056204694565479395 stripped
 GameObject:
@@ -93,7 +90,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8464796555319718376, guid: 210039b3851811c438fe3f75e9c752a3, type: 3}
---- !u!114 &3720344442052305006
+--- !u!114 &3923941615917573964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,20 +99,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9056204694565479395}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4af3f010688a6a542b9bd5ae7a318414, type: 3}
+  m_Script: {fileID: 11500000, guid: dbacdfb882c02f54d8a0d88380c09704, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollectibleRotate
-  rotationSpeed: 0.5
---- !u!114 &6865855115530301000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9056204694565479395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7dcaea65da4cd4fb6eb799edeea0b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CoinCollect
+  m_EditorClassIdentifier: Assembly-CSharp::Coin
   coinFX: {fileID: 0}
+  score: 1
+  rotationSpeed: 0.5
