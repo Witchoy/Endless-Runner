@@ -3,29 +3,28 @@ using UnityEngine;
 
 public class SegmentGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject[] segments;
+    [SerializeField] private GameObject[] segmentPrefabs;
 
-    private int _zPos;
-    private bool _creatingSegment;
-    private int _segmentNum;
-
+    private int _nextSpawnZ;
+    private int _lastSegmentIndex;
+    private bool _isSpawning;
 
     private void Update()
     {
-        if (!_creatingSegment)
+        if (!_isSpawning)
         {
-            _creatingSegment = true;
-            StartCoroutine(SegmentGen());
+            _isSpawning = true;
+            StartCoroutine(SpawnNextSegment());
         }
     }
 
-    private IEnumerator SegmentGen()
+    private IEnumerator SpawnNextSegment()
     {
-        _segmentNum = Random.Range(0, segments.Length);
-        Instantiate(segments[_segmentNum], new Vector3(0, 0, _zPos), Quaternion.identity);
+        _lastSegmentIndex = Random.Range(0, segmentPrefabs.Length);
+        Instantiate(segmentPrefabs[_lastSegmentIndex], new Vector3(0, 0, _nextSpawnZ), Quaternion.identity);
 
-        _zPos += 44;
+        _nextSpawnZ += 44;
         yield return new WaitForSeconds(5f);
-        _creatingSegment = false;
+        _isSpawning = false;
     }
 }

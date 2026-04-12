@@ -4,28 +4,25 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
-
+    [SerializeField] private Animator dummyAnimator;
+    [SerializeField] private Animator cameraAnimator;
+    
     private InputAction _moveAction;
     private Vector2 _moveInput;
-    private Rigidbody _playerRigidbody;
-    private Animator _playerAnimator;
+    private Rigidbody _rb;
 
     private bool _isDead;
-    
-    private const float RightLimit = 5.75f;
+
+    private const float HorizontalLimit = 5.75f;
 
     private void Start()
     {
         _moveAction = InputSystem.actions.FindAction("Move");
-        if (_moveAction == null) Debug.LogError("Error occured while initializing move action");
+        if (_moveAction == null) Debug.LogError("Move action not found in Input Actions asset");
 
-        _playerRigidbody = GetComponent<Rigidbody>();
-        if (_playerRigidbody == null) Debug.LogError("Error occurred while initializing rigidbody");
-        
-        _playerAnimator = GetComponentInChildren<Animator>();
-        if (_playerAnimator  == null) Debug.LogError("Error occurred while initializing animator");
-        
-        // Subcribe to playerDeath action
+        _rb = GetComponent<Rigidbody>();
+        if (_rb == null) Debug.LogError("Rigidbody component missing on Player");
+
         GameManager.Instance.OnPlayerDeath += Die;
     }
 
@@ -42,24 +39,27 @@ public class Player : MonoBehaviour
     private void Move()
     {
         if (_isDead) return;
-        _playerRigidbody.linearVelocity = new Vector3(
+
+        _rb.linearVelocity = new Vector3(
             _moveInput.x * moveSpeed,
-            _playerRigidbody.linearVelocity.y,
+            _rb.linearVelocity.y,
             moveSpeed
         );
 
+        // Clamp horizontal position within track bounds
         var pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, -RightLimit, RightLimit);
+        pos.x = Mathf.Clamp(pos.x, -HorizontalLimit, HorizontalLimit);
         transform.position = pos;
     }
 
     private void Die()
     {
         _isDead = true;
-        _playerRigidbody.linearVelocity = Vector3.zero;
-        _playerAnimator.SetTrigger("HitObstacle");
+        _rb.linearVelocity = Vector3.zero;
+        dummyAnimator.SetTrigger("HitObstacle");
+        cameraAnimator.SetTrigger("HitObstacle");
     }
-    
+
     private void OnDestroy()
     {
         GameManager.Instance.OnPlayerDeath -= Die;

@@ -3,16 +3,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Game Info
-    private int _score;
-    
-    // Singleton stuff
+    // Singleton
     public static GameManager Instance { get; private set; }
 
     // Events
     public event Action<int> OnScoreChanged;
     public event Action OnPlayerDeath;
-    
+
+    private int _score;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -24,16 +23,14 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-
-    public void AddScore(int score)
+    public void AddScore(int amount)
     {
-        _score += score;
+        _score += amount;
         OnScoreChanged?.Invoke(_score);
     }
 
     public void GameOver()
     {
-        
         OnPlayerDeath?.Invoke();
     }
 }
