@@ -3,11 +3,12 @@ using UnityEngine;
 public class CoinCollect : MonoBehaviour
 {
     [SerializeField] private AudioSource coinFX;
+    [SerializeField] private int score = 1;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         coinFX.Play();
-        MasterInfo.coinCount += 1;
+        GameManager.Instance.AddScore(score);
         Destroy(gameObject);
     }
 }
