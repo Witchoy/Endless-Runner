@@ -4,13 +4,12 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
-    private readonly float _leftLimit = -6.0f;
     private InputAction _moveAction;
     private Vector2 _moveInput;
 
     private Rigidbody _playerRigidbody;
 
-    private readonly float _rightLimit = 6.0f;
+    private readonly float _rightLimit = 5.75f;
 
     private void Start()
     {
@@ -40,7 +39,7 @@ public class PlayerController : MonoBehaviour
         );
 
         var pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, _leftLimit, _rightLimit);
+        pos.x = Mathf.Clamp(pos.x, -_rightLimit, _rightLimit);
         transform.position = pos;
     }
 }
